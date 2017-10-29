@@ -226,7 +226,7 @@ CREATE ROLE role _cnam ;
 GRANT CREATE PROCEDURE, CREATE TRIGGER, CREATE SEQUENCE TO role_cnam ;
 ```
 
-> d ) Afficher la liste des privilèges du role role_cnam
+> d ) Afficher la liste des privilèges du rôle role_cnam
 
 ```
 select * from dba_role_privs where granted_role = upper(‘role_cnam’) ;
@@ -246,7 +246,7 @@ SELECT * FROM dba_role_privs WHERE grantee = ‘toto’ ;
 
 # 12 ) Les profils
 
-> a ) Quel est le nombre de sessions autorisés du profil par défaut ?
+> a ) Quel est le nombre de sessions autorisées du profil par défaut ?
 
 ```
 SELECT * FROM dba_profiles ; // Infinie
