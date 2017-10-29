@@ -165,7 +165,7 @@ sqlplus
 > e ) 
 
 
-# 10 ) 
+# 10 ) Les privilèges
 
 > f ) Donner à l’user toto le droit de se connecter et d’ouvrir une session
 
