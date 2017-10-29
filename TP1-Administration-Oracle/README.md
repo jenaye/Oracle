@@ -109,13 +109,13 @@ DESC dba_objects;  OWNER à EDITION_NAME
 
 # 7) Les tables
 
->a  ) 
+>a  ) Combien d’attributs contient la vue dba_tables ?
 
 ```
 SELECT  COUNT(*) FROM dba_tables; // 1687
 ```
 
-> b ) 
+> b ) Quel est le type et la taille de l’attribut num_rows ?
 
 ```
 DESC dba_;
