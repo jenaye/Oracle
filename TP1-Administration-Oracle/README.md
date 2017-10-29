@@ -12,17 +12,19 @@ docker run -d -p 49160:22 -p 49161:1521 -p 8080:8080 -e ORACLE_ENABLE_XDB=true w
 ssh root@localhost -p 49160
 ```
 # 2) Connectez-vous en tant que system
+
+```
+> sqlplus
+login : system
+pass : oracle
+```
  
 ```
 set pause on
 set pagesize 40
 set linesize 100
 ```
-```
-> sqlplus
-login : system
-pass : oracle
-```
+
 
 
 # 3 ) Le dictionnaire de données (DD)
