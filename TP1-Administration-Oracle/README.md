@@ -168,9 +168,11 @@ sqlplus
 # 10 ) 
 
 > f ) Donner à l’user toto le droit de se connecter et d’ouvrir une session
-```$xslt
+
+```
 GRANT CREATE session, CREATE TABLE, CREATE SEQUENCE, create view to toto ;
 ```
+
 
 > g ) Vérifier que ce privilège a bien été donné. Pour cela, on pourra consulter la vue
       dba_sys_privs ou la vue session_privs
@@ -181,6 +183,7 @@ SELECT * FROM session_privs;
 ```
 
 > h ) Combien de privilèges de niveau système à l’utilisateur SYSTEM ?
+
 ```
 SELECT COUNT(*) FROM dba_sys_privs WHERE grantee = ‘SYSTEM’ ; // 5
 ```
@@ -267,6 +270,7 @@ par défault seulement 10
 ```
 CREATE PROFILE profil_cnam LIMIT sessions_per_user 3 connect_time 10 idle_time 5 failed_login_attemps 2;
 ```
+
 
 > d ) Assigner le profil profil_cnam à l'utilisateur toto
 
