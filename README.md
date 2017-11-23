@@ -10,7 +10,7 @@ TP split by folder, all write-up are in README.md
 
 Readme-TP{id}.pdf are available for offline
 
- # Execute in Sqlplus you're script
+ # Execute you're script in Sqlplus
  
  To execute {name}.sql with oracle you have you do the follow instructions
  
