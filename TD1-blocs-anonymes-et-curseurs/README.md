@@ -29,3 +29,42 @@ DECLARE
 	END;
 	/
 ```
+
+2) Ecrire le bloc PL/SQL qui lit au clavier le numéro d'un employé puis affiche les informations concernant cet employé.
+
+```
+DECLARE
+
+	L_Emp Employe%ROWTYPE;
+	L_NumEmploye Employe.NumEmp%TYPE
+
+	BEGIN
+		L_NumEmploye:= &NumEmploye;
+		SELECT * into L_Emp.NumEmp, L_Emp.Nom, L_Emp.Prenom, L_Emp.NumHyper FROM Employe WHERE NumEmp = L_NumEmploye;
+		dbms_output.put('ID', || L_Emp.NumEmp || , 'Prenom', || L_Emp.Nom||, '.');
+
+end
+/
+
+```
+
+Bonus : Récuperer les informations d'un employe par son id en curseur
+
+```
+DECLARE
+
+cursor CurseurEmploye is select * from Employe;
+L_Emp CurseurEmploye%ROWTYPE;
+
+BEGIN
+	open CurseurEmploye;
+	loop
+		fetch CurseurEmploye into L_Emp.NumEmp, L_Emp.Nom, L_Emp.Prenom, L_Emp.NumHyper;
+		exit when CurseurEmploye%NOTFOUND;
+		dbms_output.put('ID', || L_Emp.NumEmp || , 'Prenom', || L_Emp.Nom||, '.');
+	end loop;
+
+end
+/		
+
+```
