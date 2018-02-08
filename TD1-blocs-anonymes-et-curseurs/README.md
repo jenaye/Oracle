@@ -48,6 +48,23 @@ end
 
 ```
 
+3) Ecrire un bloc PL/SQL qui affiche la moyenne des prix unitaires des produits d'un hypermarché dont le numéro est rentrée
+
+```
+DECLARE 
+   L_MOYENNE Produit.Prix%TYPE;
+   L_NumHyper Hyper.NumHyper%TYPE;
+   BEGIN
+    L_NumHyper:= &NumHyper;
+    SELECT AVG(Prix) into L_MOYENNE FROM Produit P, Rayon R WHERE P.NumRayon = R.NumRayon AND R.NumHyper = L_NumHyper;
+    dbms_output.put_line('La moyenne vaut', || L_MOYENNE);
+    exception
+       when NO_DATA_FOUND then 
+        dbms_output.put_line('Hyper non trouvé');
+end
+/
+```
+
 Bonus : Récuperer les informations d'un employe par son id en curseur
 
 ```
