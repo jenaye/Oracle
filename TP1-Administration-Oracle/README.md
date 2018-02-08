@@ -23,6 +23,7 @@ pass : oracle
 set pause on
 set pagesize 40
 set linesize 100
+set serveroutput on
 ```
 
 
