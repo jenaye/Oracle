@@ -7,31 +7,33 @@ On souhaite déterminer le pourcentage d'employés ayant pris des congés annuel
 Gérer par une exception le cas d'un employé déjà existant dans la table 
 
 ```
- CREATE OR REPLACE PROCEDURE insertEmploye(pNumEmploye Employe.NumEmploye%TYPE,
-                                        pNomEmploye Employe.NomEmploye%TYPE,
-                                        pPrenomEmploye Employe.PrenomEmploye,
-                                        pNumService Employe.NumService%TYPE) IS
-
-Service_Inexistant EXCEPTION;
-lNb Number;
-lLibelleS Service.libelleS%TYPE;
-
-BEGIN
-    -- DUP_VAL_ON_INDEX
-    SELECT COUNT (*) INTO lNb FROM Service WHERE NumService = pNumService;
-
-    IF lNb = 0 THEN
-        RAISE Service_Inexistant;
-    ENDIF;
-
-    INSERT INTO Employe (NumEmploye, NomEmploye, PrenomEmploye, Service) VALUES (pNumEmploye, pNomEmploye, pPrenomEmploye, pNumService);
-
-
-EXCEPTION
-    WHEN Service_Inexistant THEN
-        dbms_output.put_line("Service inexistant : || pNumService ||");
-END;
-/
+create or replace procedure insererUnEmploye(pNumEmployer Employe.NumEmployer%type,
+                                             pNom Employe.Nom%type,
+                                             pPrenom Employe.Prenom%type,
+                                             pNumService Employe.NumService%type) is
+    Service_Inexistant execption;
+    Doublon exception;
+    lNB Number;
+    
+    
+begin
+        SELECT count(*) into lNB FROM Service where NumService=pNumService;
+        if lNB=0 then
+            raise Service_Inexistant;  
+        end if;
+        
+        SELECT count(*) into lNB FROM Employe where NumEmployer= pNumEployer;
+        if lNB=1 then
+            raise Doublon;
+        end if;
+        insert into Employe values(pNumEployer,pNom,pPrenom,pNumService);
+end;
+        exeption
+            WHEN Service_Inexistant then
+            dbns_out_put.put_line('le Service n '||pNumService||' n''existe pas');
+            WHEN Doublon then
+            dbns_out_put.put_line('l''Employe  '||pNumEployer||' existe déja');
+            
 ```
 
 
